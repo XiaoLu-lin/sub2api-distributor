@@ -8,6 +8,7 @@
 - 可选 `Caddy` 反向代理
 - 可选 `systemd` 托管
 - 可选安装脚本
+- 自动部署脚本
 
 ## 1. 部署前提
 
@@ -23,6 +24,10 @@
   - [docker-compose.local.yml](/Users/lhl/Desktop/code/sub2api-distributor/deploy/docker-compose.local.yml)
 - 环境变量示例：[.env.example](/Users/lhl/Desktop/code/sub2api-distributor/deploy/.env.example)
 - Caddy 示例：[Caddyfile](/Users/lhl/Desktop/code/sub2api-distributor/deploy/Caddyfile)
+- 自动部署脚本：
+  - [deploy.sh](/Users/lhl/Desktop/code/sub2api-distributor/deploy/deploy.sh)
+  - [redeploy.sh](/Users/lhl/Desktop/code/sub2api-distributor/deploy/redeploy.sh)
+  - [check.sh](/Users/lhl/Desktop/code/sub2api-distributor/deploy/check.sh)
 
 ## 3. 启动步骤
 
@@ -49,6 +54,18 @@ docker compose up -d --build
 
 ```bash
 docker compose logs -f sub2api-distributor
+```
+
+如果你要直接走自动部署脚本：
+
+```bash
+bash /opt/sub2api-distributor/deploy/deploy.sh
+```
+
+如果你要拉最新代码并重部署：
+
+```bash
+bash /opt/sub2api-distributor/deploy/redeploy.sh
 ```
 
 ## 3.1 使用 systemd 托管

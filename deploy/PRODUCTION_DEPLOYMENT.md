@@ -211,6 +211,18 @@ docker compose ps
 docker compose logs -f sub2api-distributor
 ```
 
+如果要直接使用自动部署脚本：
+
+```bash
+bash /opt/sub2api-distributor/deploy/deploy.sh
+```
+
+如果后续更新代码后要自动重部署：
+
+```bash
+bash /opt/sub2api-distributor/deploy/redeploy.sh
+```
+
 ### 4.6 验证健康检查
 
 先在服务器本机执行：

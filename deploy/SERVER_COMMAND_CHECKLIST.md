@@ -66,6 +66,12 @@ cd /opt/sub2api-distributor/deploy
 docker compose up -d --build
 ```
 
+或者直接执行自动部署脚本：
+
+```bash
+bash /opt/sub2api-distributor/deploy/deploy.sh
+```
+
 ---
 
 ## 6. 查看容器状态
@@ -125,6 +131,12 @@ sudo systemctl status sub2api-distributor
 ---
 
 ## 12. 常用维护命令
+
+拉最新代码并重部署：
+
+```bash
+bash /opt/sub2api-distributor/deploy/redeploy.sh
+```
 
 重启服务：
 
