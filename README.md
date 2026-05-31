@@ -22,6 +22,13 @@
 - 主数据来源：复用 `sub2api` 主库中的 `users / user_affiliates / user_affiliate_ledger`
 - 部署方式：`Dockerfile + docker compose + .env`
 
+前端包管理说明：
+
+- 前端使用 `pnpm`
+- 为避免本地与 Docker / 服务器构建环境漂移，`frontend/package.json` 已固定：
+  - `packageManager: pnpm@9.12.0`
+- 如果服务器上直接运行 `pnpm install` 或在 Docker 中通过 `corepack` 安装依赖，请保持与该版本一致
+
 ## 协作工作流
 
 - 本仓库已接入 OpenSpec for Codex
@@ -203,6 +210,29 @@ Docker 部署：
 cd /Users/lhl/Desktop/code/sub2api-distributor/deploy
 cp .env.example .env
 docker compose up -d --build
+```
+
+如果构建时报类似下面的错误：
+
+- `Lockfile failed supply-chain policy check`
+- `minimumReleaseAge`
+- `tinyglobby ... within the minimumReleaseAge cutoff`
+
+优先检查：
+
+1. 是否已经拉到最新代码
+2. `frontend/package.json` 中是否包含：
+   - `"packageManager": "pnpm@9.12.0"`
+3. Docker 构建是否仍在使用旧缓存
+
+常用处理方式：
+
+```bash
+cd /Users/lhl/Desktop/code/sub2api-distributor
+git pull
+cd deploy
+docker compose build --no-cache
+docker compose up -d
 ```
 
 systemd 托管：

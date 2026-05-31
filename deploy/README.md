@@ -50,6 +50,25 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
+前端构建版本说明：
+
+- Dockerfile 中前端依赖安装通过 `corepack + pnpm` 执行
+- 为避免服务器拉到比本地更高版本的 pnpm 导致锁文件策略差异，项目已固定：
+  - `frontend/package.json -> packageManager: pnpm@9.12.0`
+- 如果服务器还在用旧代码，可能出现：
+  - `Lockfile failed supply-chain policy check`
+  - `minimumReleaseAge`
+
+遇到这类报错时，优先执行：
+
+```bash
+cd /opt/sub2api-distributor
+git pull
+cd deploy
+docker compose build --no-cache
+docker compose up -d
+```
+
 查看日志：
 
 ```bash
