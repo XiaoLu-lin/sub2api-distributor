@@ -1,0 +1,29 @@
+# OS
+.DS_Store
+
+# Local env files
+.env
+deploy/.env
+
+# Logs
+logs/
+*.log
+
+# Binaries
+server
+sub2api-distributor
+
+# Build outputs
+backend/internal/web/dist/
+frontend/dist/
+frontend/node_modules/
+
+# Test artifacts
+test-results/
+
+# Editor
+.idea/
+.vscode/
+
+# Codex local state
+.codex/
