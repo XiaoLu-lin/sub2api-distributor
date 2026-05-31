@@ -78,12 +78,24 @@ bash /opt/sub2api-distributor/deploy/redeploy.sh
 
 - [install.sh](/Users/lhl/Desktop/code/sub2api-distributor/deploy/install.sh)
 
-如果你要直接安装到服务器：
+如果代码已经位于服务器目标目录，例如：
+
+```bash
+/opt/sub2api-distributor
+```
+
+那么可以直接执行：
 
 ```bash
 sudo bash /opt/sub2api-distributor/deploy/install.sh
 sudo systemctl enable --now sub2api-distributor
 ```
+
+说明：
+
+- 脚本会检测当前项目目录是否已经等于安装目录
+- 如果已经在目标目录中，只会补 `.env`、安装 `systemd` 服务和重载 `systemd`
+- 如果不在目标目录中，才会执行文件复制
 
 ## 4. 健康检查
 

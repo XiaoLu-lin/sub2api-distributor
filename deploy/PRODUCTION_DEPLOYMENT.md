@@ -312,6 +312,14 @@ sudo bash /opt/sub2api-distributor/deploy/install.sh
 sudo systemctl enable --now sub2api-distributor
 ```
 
+说明：
+
+- 如果项目代码已经就在 `/opt/sub2api-distributor`，脚本会跳过文件复制
+- 这时脚本主要负责：
+  - 补 `.env`
+  - 安装 `sub2api-distributor.service`
+  - `systemctl daemon-reload`
+
 查看状态：
 
 ```bash

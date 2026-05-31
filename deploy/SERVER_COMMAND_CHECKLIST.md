@@ -120,6 +120,14 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now sub2api-distributor
 ```
 
+如果代码本身就已经位于：
+
+```bash
+/opt/sub2api-distributor
+```
+
+那么 `install.sh` 会自动跳过文件复制，只安装和刷新服务配置。
+
 ---
 
 ## 11. 查看 systemd 状态
